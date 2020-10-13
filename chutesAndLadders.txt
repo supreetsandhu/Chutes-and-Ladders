@@ -1,0 +1,182 @@
+
+ 
+#include <iostream>
+ 
+using namespace std;
+ 
+int main(int argc, char** argv){
+ 
+  srand(time(NULL));
+  
+  int totalPlayer1 = 0; //what square the player is on
+  int totalPlayer2 = 0; //for each player
+  string ladder = "congrats you landed on a ladder! ";
+  string chutes = "oh no! you landed on a chute! ";  
+ 
+  while ( totalPlayer1 < 100 && totalPlayer2 < 100 ){ 
+    short dice1 = rand() % 6 + 1; //player one's roll
+    cout << "player one roll was " << dice1 << endl;
+    totalPlayer1 += dice1;
+    short dice2 = rand() % 6 + 1; //player two's roll 
+    totalPlayer2 += dice2; 
+    
+    //checking to see if player one landed on a ladder 
+   if (totalPlayer1 == 1)
+     {
+       totalPlayer1 += 37;
+        cout << ladder;
+     }
+   if (totalPlayer1 == 4) 
+     { 
+       totalPlayer1 += 10; 
+       cout << ladder; 
+     } 
+   if (totalPlayer1 == 23) 
+     { 
+       totalPlayer1 += 21; 
+       cout << ladder; 
+     } 
+   if (totalPlayer1 == 36) 
+     { 
+       totalPlayer1 += 8; 
+       cout << ladder; 
+     } 
+   if (totalPlayer1 == 71) 
+     { 
+       totalPlayer1 += 19; 
+       cout << ladder; 
+     } 
+   if (totalPlayer1 == 80) 
+     { 
+       totalPlayer1 += 20; 
+       cout << ladder; 
+     } 
+   //checking to see if player one landed on a chute 
+  
+   if (totalPlayer1 == 95) 
+     { 
+       totalPlayer1 -= 20; 
+       cout << chutes; 
+     } 
+   if (totalPlayer1 == 64) 
+     { 
+       totalPlayer2 -= 4; 
+       cout << chutes; 
+     } 
+  
+   if (totalPlayer1 == 56) 
+     { 
+       totalPlayer1 -= 3; 
+       cout << chutes; 
+     } 
+   if (totalPlayer1 == 48) 
+     { 
+       totalPlayer1 -= 22; 
+       cout << chutes; 
+     } 
+   if (totalPlayer1 == 16) 
+     { 
+       totalPlayer1 -= 10; 
+       cout << chutes; 
+     } 
+ 
+   //ensures that the player lands on the square 100
+   //exactly and contiues to roll the dice if
+   //they go over 100
+   if (totalPlayer1 > 100) 
+     {
+       totalPlayer1 -= dice1;
+     }    
+     
+   cout << "player one total is " << totalPlayer1 << endl;
+ 
+   //player two turn happens
+ 
+   if( totalPlayer1 < 100) //if player one wins, player two wont have a turn
+     {
+   
+   cout << "player two roll was " << dice2 << endl; 
+  
+   //check to see if player two has landed on a ladder 
+   if (totalPlayer2 == 1) 
+     { 
+       totalPlayer2 += 37; 
+       cout << ladder; 
+     } 
+   if (totalPlayer2 == 4) 
+     { 
+       totalPlayer2 += 10; 
+         cout << ladder; 
+     } 
+   if (totalPlayer2 == 23) 
+     { 
+       totalPlayer2 += 21; 
+       cout << ladder; 
+     } 
+   if (totalPlayer2 == 36) 
+     { 
+       totalPlayer2 += 8; 
+       cout << ladder; 
+     } 
+   if (totalPlayer2 == 71) 
+     { 
+       totalPlayer2 += 19; 
+       cout << ladder; 
+     } 
+   if (totalPlayer2 == 80) 
+     { 
+       totalPlayer2 += 20; 
+       cout << ladder; 
+     } 
+  
+  
+   // checks to see in player two has landed on a chute 
+    
+   if (totalPlayer2 == 95) 
+     { 
+       totalPlayer2 -= 20; 
+       cout << chutes; 
+     } 
+   if (totalPlayer2 == 64) 
+     { 
+       totalPlayer2 -= 4; 
+       cout << chutes; 
+     } 
+   if (totalPlayer2 == 56) 
+     { 
+       totalPlayer2 -= 3; 
+       cout << chutes; 
+     } 
+   if (totalPlayer2 == 48) 
+     { 
+       totalPlayer2 -= 22; 
+       cout << chutes; 
+     } 
+   if (totalPlayer2 == 16) 
+     { 
+       totalPlayer2 -= 10; 
+       cout << chutes; 
+     } 
+    
+  
+   //ensures that the player 2 lands on the square 100 
+   //exactly and contiues to roll the dice if 
+   //they go over 100 
+   if (totalPlayer2 > 100) 
+     { 
+       totalPlayer2 -= dice2; 
+     } 
+   
+    
+   cout << "player two total is " << totalPlayer2 << endl; 
+     } //end of player two turn loop
+  } //end of the while loop
+  
+  //decides what player has won.
+  if (totalPlayer1 < totalPlayer2 )
+    cout << "congrats player 2 won!";
+  if (totalPlayer1 > totalPlayer2)
+    cout << "congrats player 1 won!";          
+ 
+  return 0;
+}
